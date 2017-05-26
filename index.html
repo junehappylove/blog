@@ -142,13 +142,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -270,7 +270,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
   
@@ -304,7 +304,7 @@
       
           
         <h2 id="Node-js安装"><a href="#Node-js安装" class="headerlink" title="Node.js安装"></a>Node.js安装</h2><p>参考 <a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
-<p><strong>ps：</strong>如果没有VPN的用户最好切换一下npm的源，不然后续的步骤可能会让你想砸电脑，安装完后，在命令窗口执行下面代码</p>
+<p><strong>ps：</strong> 如果没有VPN的用户最好切换一下npm的源，不然后续的步骤可能会让你想砸电脑，安装完后，在命令窗口执行下面代码</p>
 <pre><code>npm config set registry http://registry.cnpmjs.org    #切换npm为淘宝镜像
 </code></pre><h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>参考 <a href="http://www.runoob.com/git/git-install-setup.html" target="_blank" rel="external">http://www.runoob.com/git/git-install-setup.html</a></p>
 <h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><pre><code>npm install -g hexo-cli
@@ -330,14 +330,29 @@ hexo generate
 └── package.json
 </code></pre><p>进行到这步后就可以先在本地运行下，看看效果了。执行下面命令：</p>
 <pre><code>cd &lt;folder&gt;         #切换到项目目录下
-npm install           #install before start blogging
+npm install         #install before start blogging
 hexo server         #运行本地服务
 </code></pre><p>浏览器输入 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 就可以看到效果</p>
-<p><strong>这里要注意</strong><br>最好重定义一下root地址,在_config.yml配置文件中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># URL</div><div class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</div><div class="line">url: http://github.com/junehappylove</div><div class="line">root: /blog/</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div><div class="line">```	</div><div class="line">这样 `hexo server`后，访问http://localhost:4000/blog/</div><div class="line"></div><div class="line">## 修改Hexo的主题</div><div class="line">Hexo的主题都是一些前端民间高手写的模版，可以在官方收录的主题中去挑选：https://hexo.io/themes/</div><div class="line"></div><div class="line">主题下载完成后，将主题文件解压到Hexo项目的thems文件夹下面</div><div class="line"></div><div class="line">接下来就是修改Hexo的配置文件_config.yml，将里面theme 对应的值改为之前下载的主题的文件夹名字</div><div class="line"></div><div class="line">关于Hexo中_config.yml 文件的其他配置，大家可以参考官方的文档，这里就不多赘述了：</div><div class="line"></div><div class="line">文档链接 https://hexo.io/zh-cn/docs/configuration.html</div><div class="line"></div><div class="line">## 编写博客文章</div><div class="line">如果你使用过MarkDown 来写博客文章的话，接下来就简单多了</div></pre></td></tr></table></figure></p>
-<p>title: #文章标题<br>date: #文章日期<br>tags: #文章标签</p>
-<h2 id="categories-文章分类"><a href="#categories-文章分类" class="headerlink" title="categories: #文章分类"></a>categories: #文章分类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">在.md文件的开头添加上面代码，是为了让Hexo框架在生成网页的时候，设置相应的参数。</div><div class="line">将写好的.md文件放入Hexo项目的source 目录下的_posts 文件夹中，可以看到里面有个hello-world.md 文件，这就是默认的文章。</div><div class="line"></div><div class="line">## 生成静态Html文件</div><div class="line"></div><div class="line">	cd &lt;folder&gt;         #切换到项目目录下</div><div class="line">	hexo generate       #生成静态文件到项目根目录的public文件夹中</div><div class="line"></div><div class="line">## 发布静态Html文件到码云 Pages上</div><div class="line">配置项目根目录_config.yml 文件，修改deploy 的值</div></pre></td></tr></table></figure>
-<h1 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h1><h2 id="Docs-https-hexo-io-docs-deployment-html"><a href="#Docs-https-hexo-io-docs-deployment-html" class="headerlink" title="Docs: https://hexo.io/docs/deployment.html"></a>Docs: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">https://hexo.io/docs/deployment.html</a></h2><p>deploy:<br>  type: git<br>  repo: <a href="https://github.com/junehappylove/blog.git">https://github.com/junehappylove/blog.git</a></p>
-<h2 id="repo-https-git-oschina-net-junehappylove-blog-git"><a href="#repo-https-git-oschina-net-junehappylove-blog-git" class="headerlink" title="repo: https://git.oschina.net/junehappylove/blog.git"></a>repo: <a href="https://git.oschina.net/junehappylove/blog.git" target="_blank" rel="external">https://git.oschina.net/junehappylove/blog.git</a></h2><p>  branch: master<br>```<br>修改完后在命令窗口执行下面命令：</p>
+<p><strong>这里要注意</strong><br>最好重定义一下root地址,在_config.yml配置文件中</p>
+<pre><code># URL
+## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;
+url: http://github.com/junehappylove
+root: /blog/
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+</code></pre><p>这样 <code>hexo server</code>后，访问<a href="http://localhost:4000/blog/" target="_blank" rel="external">http://localhost:4000/blog/</a></p>
+<h2 id="修改Hexo的主题"><a href="#修改Hexo的主题" class="headerlink" title="修改Hexo的主题"></a>修改Hexo的主题</h2><p>Hexo的主题都是一些前端民间高手写的模版，可以在官方收录的主题中去挑选：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a></p>
+<p>主题下载完成后，将主题文件解压到Hexo项目的thems文件夹下面</p>
+<p>接下来就是修改Hexo的配置文件_config.yml，将里面theme 对应的值改为之前下载的主题的文件夹名字</p>
+<p>关于Hexo中_config.yml 文件的其他配置，大家可以参考官方的文档，这里就不多赘述了：</p>
+<p>文档链接 <a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/configuration.html</a></p>
+<h2 id="编写博客文章"><a href="#编写博客文章" class="headerlink" title="编写博客文章"></a>编写博客文章</h2><p>如果你使用过MarkDown 来写博客文章的话，接下来就简单多了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: #文章标题</div><div class="line">date: #文章日期</div><div class="line">tags: #文章标签</div><div class="line">categories: #文章分类</div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p>在.md文件的开头添加上面代码，是为了让Hexo框架在生成网页的时候，设置相应的参数。<br>将写好的.md文件放入Hexo项目的source 目录下的_posts 文件夹中，可以看到里面有个hello-world.md 文件，这就是默认的文章。</p>
+<h2 id="生成静态Html文件"><a href="#生成静态Html文件" class="headerlink" title="生成静态Html文件"></a>生成静态Html文件</h2><pre><code>cd &lt;folder&gt;         #切换到项目目录下
+hexo generate       #生成静态文件到项目根目录的public文件夹中
+</code></pre><h2 id="发布静态Html文件到码云-Pages上"><a href="#发布静态Html文件到码云-Pages上" class="headerlink" title="发布静态Html文件到码云 Pages上"></a>发布静态Html文件到码云 Pages上</h2><p>配置项目根目录_config.yml 文件，修改deploy 的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/junehappylove/blog.git</div><div class="line">## repo: https://git.oschina.net/junehappylove/blog.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p>修改完后在命令窗口执行下面命令：</p>
 <pre><code>cd &lt;folder&gt;         #切换到项目目录下
 hexo deploy         #一键部署功能
 </code></pre>
@@ -589,14 +604,14 @@ hexo deploy         #一键部署功能
                 2016-2017 junehappylove
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -605,7 +620,7 @@ hexo deploy         #一键部署功能
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -638,9 +653,9 @@ hexo deploy         #一键部署功能
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
