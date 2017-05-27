@@ -15,21 +15,21 @@
 
 
 
-<meta name="description" content="JWT 在前后端分离中的应用与实践本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。">
+<meta name="description" content="本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。计算机世界的经验告诉我们，对于复杂">
 <meta name="keywords" content="jwt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JWT 在前后端分离中的应用与实践">
 <meta property="og:url" content="http://github.com/junehappylove/2017/05/27/JWT/index.html">
 <meta property="og:site_name" content="上善若水">
-<meta property="og:description" content="JWT 在前后端分离中的应用与实践本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。">
+<meta property="og:description" content="本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。计算机世界的经验告诉我们，对于复杂">
 <meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/cookie_sessions.png">
 <meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/json_web_token.png">
 <meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/flux-diagram-white-background.png">
 <meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/reflux.png">
-<meta property="og:updated_time" content="2017-05-27T01:53:45.411Z">
+<meta property="og:updated_time" content="2017-05-27T01:59:25.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JWT 在前后端分离中的应用与实践">
-<meta name="twitter:description" content="JWT 在前后端分离中的应用与实践本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。">
+<meta name="twitter:description" content="本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。计算机世界的经验告诉我们，对于复杂">
 <meta name="twitter:image" content="http://7xiijd.com1.z0.glb.clouddn.com/cookie_sessions.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -318,7 +318,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="JWT-在前后端分离中的应用与实践"><a href="#JWT-在前后端分离中的应用与实践" class="headerlink" title="JWT 在前后端分离中的应用与实践"></a>JWT 在前后端分离中的应用与实践</h1><p>本文主要介绍JWT（<a href="http://jwt.io/" target="_blank" rel="external">JSON Web Token</a>）授权机制在前后端分离中的应用与实践，包括以下三部分：</p>
+        <p>本文主要介绍JWT（<a href="http://jwt.io/" target="_blank" rel="external">JSON Web Token</a>）授权机制在前后端分离中的应用与实践，包括以下三部分：</p>
 <ul>
 <li>JWT原理介绍</li>
 <li>JWT的安全性</li>
@@ -539,7 +539,7 @@ token, err := jwt.ParseFromRequest(c.Request, func(token *jwt.Token) (interface{
         <p><span>本文标题:</span><a href="/blog/2017/05/27/JWT/">JWT 在前后端分离中的应用与实践</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">junehappylove</a></p>
         <p><span>发布时间:</span>2017-05-27, 09:39:00</p>
-        <p><span>最后更新:</span>2017-05-27, 09:53:45</p>
+        <p><span>最后更新:</span>2017-05-27, 09:59:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/blog/2017/05/27/JWT/" title="JWT 在前后端分离中的应用与实践">http://github.com/junehappylove/2017/05/27/JWT/</a>
             <span class="copy-path" data-clipboard-text="原文: http://github.com/junehappylove/2017/05/27/JWT/　　作者: junehappylove" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -569,7 +569,7 @@ token, err := jwt.ParseFromRequest(c.Request, func(token *jwt.Token) (interface{
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JWT-在前后端分离中的应用与实践"><span class="toc-number">1.</span> <span class="toc-text">JWT 在前后端分离中的应用与实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于前后端分离"><span class="toc-number">1.1.</span> <span class="toc-text">关于前后端分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-JWT-介绍及其原理"><span class="toc-number">1.2.</span> <span class="toc-text">1 JWT 介绍及其原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JWT-安全性"><span class="toc-number">1.3.</span> <span class="toc-text">2 JWT 安全性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-React-jwt-Example"><span class="toc-number">1.4.</span> <span class="toc-text">3 React-jwt Example</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于前后端分离"><span class="toc-number">1.</span> <span class="toc-text">关于前后端分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-JWT-介绍及其原理"><span class="toc-number">2.</span> <span class="toc-text">1 JWT 介绍及其原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JWT-安全性"><span class="toc-number">3.</span> <span class="toc-text">2 JWT 安全性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-React-jwt-Example"><span class="toc-number">4.</span> <span class="toc-text">3 React-jwt Example</span></a></li></ol>
         
     </div>
     <style>
