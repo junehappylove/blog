@@ -14,19 +14,23 @@
 <meta name="author" content="junehappylove" />
 
 
-    
-    
 
-
-<meta name="description" content="一入编程深似海，从此哥哥是大神">
-<meta property="og:type" content="website">
-<meta property="og:title" content="上善若水">
-<meta property="og:url" content="http://github.com/junehappylove/index.html">
+<meta name="description" content="JWT 在前后端分离中的应用与实践本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。">
+<meta name="keywords" content="jwt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JWT 在前后端分离中的应用与实践">
+<meta property="og:url" content="http://github.com/junehappylove/2017/05/27/JWT/index.html">
 <meta property="og:site_name" content="上善若水">
-<meta property="og:description" content="一入编程深似海，从此哥哥是大神">
+<meta property="og:description" content="JWT 在前后端分离中的应用与实践本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。">
+<meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/cookie_sessions.png">
+<meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/json_web_token.png">
+<meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/flux-diagram-white-background.png">
+<meta property="og:image" content="http://7xiijd.com1.z0.glb.clouddn.com/reflux.png">
+<meta property="og:updated_time" content="2017-05-27T01:53:45.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="上善若水">
-<meta name="twitter:description" content="一入编程深似海，从此哥哥是大神">
+<meta name="twitter:title" content="JWT 在前后端分离中的应用与实践">
+<meta name="twitter:description" content="JWT 在前后端分离中的应用与实践本文主要介绍JWT（JSON Web Token）授权机制在前后端分离中的应用与实践，包括以下三部分：  JWT原理介绍 JWT的安全性 React.js+Flux架构下的实践（React-jwt example）  关于前后端分离前后端分离是一个很有趣的议题，它不仅仅是指前后端工程师之间的相互独立的合作分工方式，更是前后端之间开发模式与交互模式的模块化、解耦化。">
+<meta name="twitter:image" content="http://7xiijd.com1.z0.glb.clouddn.com/cookie_sessions.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,13 +58,11 @@
 <link rel="stylesheet" href="/blog/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>上善若水</title>
+<title>JWT 在前后端分离中的应用与实践 | 上善若水</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -69,8 +71,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -272,9 +274,7 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-JWT" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JWT" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/blog/2017/05/27/JWT/" class="article-date">
@@ -292,12 +292,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/05/27/JWT/">JWT 在前后端分离中的应用与实践</a>
+    <h1 class="article-title" itemprop="name">
+      JWT 在前后端分离中的应用与实践
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/blog/categories/jwt/">jwt</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/jwt/">jwt</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -517,358 +532,85 @@ token, err := jwt.ParseFromRequest(c.Request, func(token *jwt.Token) (interface{
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/blog/categories/jwt/">jwt</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/jwt/">jwt</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/blog/2017/05/27/JWT/">JWT 在前后端分离中的应用与实践</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">junehappylove</a></p>
+        <p><span>发布时间:</span>2017-05-27, 09:39:00</p>
+        <p><span>最后更新:</span>2017-05-27, 09:53:45</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/blog/2017/05/27/JWT/" title="JWT 在前后端分离中的应用与实践">http://github.com/junehappylove/2017/05/27/JWT/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://github.com/junehappylove/2017/05/27/JWT/　　作者: junehappylove" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2017/05/26/myblog/">
+                    搭建个人博客系统
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-myblog" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2017/05/26/myblog/" class="article-date">
-      <time datetime="2017-05-26T15:31:00.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/05/26/myblog/">搭建个人博客系统</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="Node-js安装"><a href="#Node-js安装" class="headerlink" title="Node.js安装"></a>Node.js安装</h2><p>参考 <a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
-<p><strong>ps：</strong> 如果没有VPN的用户最好切换一下npm的源，不然后续的步骤可能会让你想砸电脑，安装完后，在命令窗口执行下面代码</p>
-<pre><code>npm config set registry http://registry.cnpmjs.org    #切换npm为淘宝镜像
-</code></pre><h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>参考 <a href="http://www.runoob.com/git/git-install-setup.html" target="_blank" rel="external">http://www.runoob.com/git/git-install-setup.html</a></p>
-<h2 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h2><pre><code>npm install -g hexo-cli
-</code></pre><p>安装成功后输入<code>hexo</code></p>
-<p>Hexo的常用命令说明：</p>
-<p>参考：<a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/commands.html</a></p>
-<h2 id="本地运行Hexo"><a href="#本地运行Hexo" class="headerlink" title="本地运行Hexo"></a>本地运行Hexo</h2><pre><code>hexo init &lt;folder&gt;
-cd &lt;folder&gt;
-npm install
-hexo generate
--------------
-</code></pre><p>新建完成后，指定文件夹的目录如下：</p>
-<pre><code>.
-├── .deploy       #需要部署的文件
-├── node_modules  #Hexo插件
-├── public        #生成的静态网页文件
-├── scaffolds     #模板
-├── source        #博客正文和其他源文件, 404 favicon CNAME 等都应该放在这里
-|   ├── _drafts   #草稿
-|   └── _posts    #文章
-├── themes        #主题
-├── _config.yml   #全局配置文件
-└── package.json
-</code></pre><p>进行到这步后就可以先在本地运行下，看看效果了。执行下面命令：</p>
-<pre><code>cd &lt;folder&gt;         #切换到项目目录下
-npm install         #install before start blogging
-hexo server         #运行本地服务
-</code></pre><p>浏览器输入 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 就可以看到效果</p>
-<p><strong>这里要注意</strong><br>最好重定义一下root地址,在_config.yml配置文件中</p>
-<pre><code># URL
-## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;
-url: http://github.com/junehappylove
-root: /blog/
-permalink: :year/:month/:day/:title/
-permalink_defaults:
-</code></pre><p>这样 <code>hexo server</code>后，访问<a href="http://localhost:4000/blog/" target="_blank" rel="external">http://localhost:4000/blog/</a></p>
-<h2 id="修改Hexo的主题"><a href="#修改Hexo的主题" class="headerlink" title="修改Hexo的主题"></a>修改Hexo的主题</h2><p>Hexo的主题都是一些前端民间高手写的模版，可以在官方收录的主题中去挑选：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a></p>
-<p>主题下载完成后，将主题文件解压到Hexo项目的thems文件夹下面</p>
-<p>接下来就是修改Hexo的配置文件_config.yml，将里面theme 对应的值改为之前下载的主题的文件夹名字</p>
-<p>关于Hexo中_config.yml 文件的其他配置，大家可以参考官方的文档，这里就不多赘述了：</p>
-<p>文档链接 <a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/configuration.html</a></p>
-<h2 id="编写博客文章"><a href="#编写博客文章" class="headerlink" title="编写博客文章"></a>编写博客文章</h2><p>如果你使用过MarkDown 来写博客文章的话，接下来就简单多了</p>
-<pre><code>---
-title: #文章标题
-date: #文章日期
-tags: #文章标签
-categories: #文章分类
----
-</code></pre><p>在.md文件的开头添加上面代码，是为了让Hexo框架在生成网页的时候，设置相应的参数。<br>将写好的.md文件放入Hexo项目的source 目录下的_posts 文件夹中，可以看到里面有个hello-world.md 文件，这就是默认的文章。</p>
-<h2 id="生成静态Html文件"><a href="#生成静态Html文件" class="headerlink" title="生成静态Html文件"></a>生成静态Html文件</h2><pre><code>cd &lt;folder&gt;         #切换到项目目录下
-hexo generate       #生成静态文件到项目根目录的public文件夹中
-</code></pre><h2 id="发布静态Html文件到码云-Pages上"><a href="#发布静态Html文件到码云-Pages上" class="headerlink" title="发布静态Html文件到码云 Pages上"></a>发布静态Html文件到码云 Pages上</h2><p>配置项目根目录_config.yml 文件，修改deploy 的值</p>
-<pre><code># Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: https://github.com/junehappylove/blog.git
-## repo: https://git.oschina.net/junehappylove/blog.git
-  branch: master
-</code></pre><p>修改完后在命令窗口执行下面命令：</p>
-<pre><code>cd &lt;folder&gt;         #切换到项目目录下
-hexo deploy         #一键部署功能
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/blog/categories/blog/">blog</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/blog/">blog</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2017/05/26/hello-world/" class="article-date">
-      <time datetime="2017-05-26T12:45:12.389Z" itemprop="datePublished">2017-05-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JWT-在前后端分离中的应用与实践"><span class="toc-number">1.</span> <span class="toc-text">JWT 在前后端分离中的应用与实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于前后端分离"><span class="toc-number">1.1.</span> <span class="toc-text">关于前后端分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-JWT-介绍及其原理"><span class="toc-number">1.2.</span> <span class="toc-text">1 JWT 介绍及其原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-JWT-安全性"><span class="toc-number">1.3.</span> <span class="toc-text">2 JWT 安全性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-React-jwt-Example"><span class="toc-number">1.4.</span> <span class="toc-text">3 React-jwt Example</span></a></li></ol></li></ol>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/05/26/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-anguiarjs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2017/05/26/anguiarjs/" class="article-date">
-      <time datetime="2017-05-25T16:00:00.000Z" itemprop="datePublished">2017-05-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/05/26/anguiarjs/">Angular Module声明和获取重载</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>module是angular中重要的模块组织方式，它提供了将一组内聚的业务组件（controller、service、filter、directive…）封装在一起的能力。这样做可以将代码按照业务领域问题分module的封装，然后利用module的依赖注入其关联的模块内容，使得我们能够更好的”分离关注点“，达到更好的”高内聚低耦合“。”高内聚低耦合“是来自面向对象设计原则。内聚是指模块或者对象内部的完整性，一组紧密联系的逻辑应该被封装在同一模块、对象等代码单元中，而不是分散在各处；耦合则指模块、对象等代码单元之间的依赖程度，如果一个模块的修改，会影响到另一个模块，则说明这两模块之间是相互依赖紧耦合的。</p>
-<p>同时module也是我们angular代码的入口，首先需要声明module，然后才能定义angular中的其他组件元素，如controller、service、filter、directive、config代码块、run代码块等。</p>
-<p>关于module的定义为：angular.module(‘com.ngbook.demo’, [])。关于module函数可以传递3个参数，它们分别为：</p>
-<ol>
-<li>name：模块定义的名称，它应该是一个唯一的必选参数，它会在后边被其他模块注入或者是在ngAPP指令中声明应用程序主模块；</li>
-<li>requires：模块的依赖，它是声明本模块需要依赖的其他模块的参数。特别注意：如果在这里没有声明模块的依赖，则我们是无法在模块中使用依赖模块的任何组件的；它是个可选参数。</li>
-<li>configFn： 模块的启动配置函数，在angular config阶段会调用该函数，对模块中的组件进行实例化对象实例之前的特定配置，如我们常见的对$routeProvider配置应用程序的路由信息。它等同于”module.config“函数，建议用”module.config“函数替换它。这也是个可选参数。</li>
-</ol>
-<p>对于angular.module方法，我们常用的方式有有种，分别为angular.module(‘com.ngbook.demo’, [可选依赖])和angular.module(‘com.ngbook.demo’)。请注意它是完全不同的方式，一个是声明创建module，而另外一个则是获取已经声明了的module。在应用程序中，对module的声明应该有且只有一次；对于获取module，则可以有多次。推荐将angular组件独立分离在不同的文件中，module文件中声明module，其他组件则引入module，需要注意的是在打包或者script方式引入的时候，我们需要首先加载module声明文件，然后才能加载其他组件模块。</p>
-<p>在angular中文社区群中，有时会听见某些同学问关于”ng:areq“的错误：</p>
-<pre><code>[ng:areq] Argument &apos;DemoCtrl&apos; is not a function, got undefined！
-</code></pre><p>这往往是因为忘记定义controller或者是声明了多次module，多次声明module会导致前边的module定义信息被清空，所以程序就会找不到已定义的组件。这我们也能从angular源码中了解到（来自loader.js）：</p>
-<pre><code>function setupModuleLoader(window) {
-        ...
-        function ensure(obj, name, factory) {
-            return obj[name] || (obj[name] = factory());
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
         }
-        var angular = ensure(window, &apos;angular&apos;, Object);
-        return ensure(angular, &apos;module&apos;, function() {
-            var modules = {};
-            return function module(name, requires, configFn) {
-                var assertNotHasOwnProperty = function(name, context) {
-                    if (name === &apos;hasOwnProperty&apos;) {
-                        throw ngMinErr(&apos;badname&apos;, &apos;hasOwnProperty is not a valid {0} name&apos;, context);
-                    }
-                };
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
 
-                assertNotHasOwnProperty(name, &apos;module&apos;);
-                if (requires &amp;&amp; modules.hasOwnProperty(name)) {
-                    modules[name] = null;
-                }
-                return ensure(modules, name, function() {
-                    if (!requires) {
-                        throw $injectorMinErr(&apos;nomod&apos;, &quot;Module &apos;{0}&apos; is not available! You either misspelled &quot; +
-                            &quot;the module name or forgot to load it. If registering a module ensure that you &quot; +
-                            &quot;specify the dependencies as the second argument.&quot;, name);
-                    }
-                    var invokeQueue = [];
-                    var runBlocks = [];
-                    var config = invokeLater(&apos;$injector&apos;, &apos;invoke&apos;);
-                    var moduleInstance = {
-                        _invokeQueue: invokeQueue,
-                        _runBlocks: runBlocks,
-                        requires: requires,
-                        name: name,
-                        provider: invokeLater(&apos;$provide&apos;, &apos;provider&apos;),
-                        factory: invokeLater(&apos;$provide&apos;, &apos;factory&apos;),
-                        service: invokeLater(&apos;$provide&apos;, &apos;service&apos;),
-                        value: invokeLater(&apos;$provide&apos;, &apos;value&apos;),
-                        constant: invokeLater(&apos;$provide&apos;, &apos;constant&apos;, &apos;unshift&apos;),
-                        animation: invokeLater(&apos;$animateProvider&apos;, &apos;register&apos;),
-                        filter: invokeLater(&apos;$filterProvider&apos;, &apos;register&apos;),
-                        controller: invokeLater(&apos;$controllerProvider&apos;, &apos;register&apos;),
-                        directive: invokeLater(&apos;$compileProvider&apos;, &apos;directive&apos;),
-                        config: config,
-                        run: function(block) {
-                            runBlocks.push(block);
-                            return this;
-                        }
-                    };
-                    if (configFn) {
-                        config(configFn);
-                    }
-                    return moduleInstance;
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-                    function invokeLater(provider, method, insertMethod) {
-                        return function() {
-                            invokeQueue[insertMethod || &apos;push&apos;]([provider, method, arguments]);
-                            return moduleInstance;
-                        };
-                    }
-                });
-            };
-        });
-    }
-</code></pre><p>在代码中，我们能了解到angular在启动时，会设置全局的angular对象，然后在angular对象上发布module这个API。关于module API代码，能清晰的看见第一行谓语句，module名称不能以hasOwnProperty命名，否则会抛出”badname“的错误信息。紧接着，如果传入了name参数，其表示是声明module，则会删除已有的module信息，将其置为null。</p>
-<p>从moduleInstance的定义，我们能够看出，angular.module为我们公开的API有：invokeQueue、runBlocks、requires、name、provider、factory、servic、value、constant、animation、filter、controller、directive、config、run。其中invokeQueue和runBlocks是按名约定的私有属性，请不要随意使用，其他API都是我们常用的angular组件定义方法，从invokeLater代码中能看到这类angular组件定义的返回依然是moduleInstance实例，这就形成了流畅API，推荐使用链式定义这些组件，而不是声明一个全局的module变量。</p>
-<p>最后，如果传入了第三个参数configFn，则会将它配置到config信息中，当angular进入config阶段时，它们将会依次执行，进行对angular应用或者angular组件如service等的实例化前的配置。</p>
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
-      
-    </div>
+
+
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/blog/categories/angular/">angular</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/angular/">angular</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
+<div class="share">
     
-  </div>
-  
-</article>
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"JWT 在前后端分离中的应用与实践　| 上善若水　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
 
 
 
@@ -876,10 +618,33 @@ hexo deploy         #一键部署功能
 
 
 
+    
 
 
-  
-  
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2017/05/26/myblog/" title="下一篇: 搭建个人博客系统">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/27/JWT/">JWT 在前后端分离中的应用与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/26/myblog/">搭建个人博客系统</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/26/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/26/anguiarjs/">Angular Module声明和获取重载</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
