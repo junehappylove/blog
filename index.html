@@ -191,7 +191,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jwt/">jwt</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jwt/">jwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mbed/">mbed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mqtt/">mqtt</a></li></ul>
                     </div>
                 </section>
                 
@@ -273,6 +273,155 @@
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-mbed-OS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2017/05/31/mbed-OS/" class="article-date">
+      <time datetime="2017-05-31T03:33:00.000Z" itemprop="datePublished">2017-05-31</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/05/31/mbed-OS/">物联网操作系统 mbed OS</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="mbed-OS-详细介绍"><a href="#mbed-OS-详细介绍" class="headerlink" title="mbed OS 详细介绍"></a>mbed OS 详细介绍</h2><p>ARM宣布了针对物联网低功耗设备的操作系统mbed OS。<br>mbed OS部分开源，其余部分控制在ARM手中，理由是为了确保操作系统不会碎片化。<br>ARM声称mbed OS只需要256kb内存，它希望开发商能能使用mbed开发电池使用寿命长达数年的设备。</p>
+<p><img src="http://static.oschina.net/uploads/img/201410/09080648_AqAM.png" alt="mbedos"></p>
+<p>mbed OS将免费提供给所有厂商使用。 </p>
+<p>在物联网领域，mbed面临多个竞争对手的挑战，如通用电气的 <a href="https://www.ge.com/digital/predix?utm_expid=109794401-13.6V0rEbO8RzmRu71-IsKIUQ.0" target="_blank" rel="external"><code>Predix</code></a> 、三星的 <a href="https://www.tizen.org/?langredirect=1" target="_blank" rel="external"><code>Tizen</code></a>，<a href="https://nest.com/" target="_blank" rel="external"><code>Nest Labs</code></a>使用的是基于Linux的私有软件，在被Google收购后它未来可能改用 Android。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/blog/categories/iot/">iot</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mbed/">mbed</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-mqtt" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2017/05/31/mqtt/" class="article-date">
+      <time datetime="2017-05-31T03:31:00.000Z" itemprop="datePublished">2017-05-31</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/05/31/mqtt/">消息传输协议 MQTT</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="MQTT-详细介绍"><a href="#MQTT-详细介绍" class="headerlink" title="MQTT 详细介绍"></a>MQTT 详细介绍</h2><p><strong>MQ 遥测传输 (MQTT)</strong> 是轻量级基于代理的发布/订阅的消息传输协议，设计思想是开放、简单、轻量、易于实现。这些特点使它适用于受限环境。例如，但不仅限于此：</p>
+<ul>
+<li>网络代价昂贵，带宽低、不可靠。</li>
+<li>在嵌入设备中运行，处理器和内存资源有限。</li>
+</ul>
+<p>该协议的特点有：</p>
+<ul>
+<li>使用发布/订阅消息模式，提供一对多的消息发布，解除应用程序耦合。</li>
+<li>对负载内容屏蔽的消息传输。</li>
+<li>使用 TCP/IP 提供网络连接。</li>
+<li>有三种消息发布服务质量：<ul>
+<li>“至多一次”，消息发布完全依赖底层 TCP/IP 网络。会发生消息丢失或重复。这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。</li>
+<li>“至少一次”，确保消息到达，但消息重复可能会发生。</li>
+<li>“只有一次”，确保消息到达一次。这一级别可用于如下情况，在计费系统中，消息重复或丢失会导致不正确的结果。</li>
+</ul>
+</li>
+<li>小型传输，开销很小（固定长度的头部是 2 字节），协议交换最小化，以降低网络流量。</li>
+<li>使用 Last Will 和 Testament 特性通知有关各方客户端异常中断的机制。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/blog/categories/iot/">iot</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mqtt/">mqtt</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-JWT" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -678,7 +827,7 @@ hexo deploy         #一键部署功能
   
     <div class="article-meta">
       <a href="/blog/2017/05/26/hello-world/" class="article-date">
-      <time datetime="2017-05-26T12:45:12.389Z" itemprop="datePublished">2017-05-26</time>
+      <time datetime="2017-05-26T11:31:00.000Z" itemprop="datePublished">2017-05-26</time>
 </a>
 
 
@@ -719,8 +868,16 @@ hexo deploy         #一键部署功能
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/blog/categories/blog/">blog</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/blog/">blog</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
