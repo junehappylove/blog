@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一入编程深似海，从此哥哥是大神"><title>Git的使用说明 | junehappylove</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/blog/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/blog/favicon.ico"><link rel="bookmark" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Git的使用说明</h1><a id="logo" href="/blog/.">junehappylove</a><p class="description">上善若水</p></div><div id="nav-menu"><a href="/blog/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索..."></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Git的使用说明</h1><div class="post-meta"><span class="date">Jun 02, 2017</span><span class="category"><a href="/blog/categories/git/">git</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i> Hits</i></i></span><a href="/blog/2017/06/02/Git的使用说明/#comments" class="comment-count"> 留言</a></div><div class="post-content"><h2 id="一，Git代码状态转换图"><a href="#一，Git代码状态转换图" class="headerlink" title="一，Git代码状态转换图"></a>一，Git代码状态转换图</h2><p><img src="http://pic002.cnblogs.com/images/2011/284865/2011082015404988.png" alt="Git代码状态转换图"></p>
+<p><strong>其中：</strong></p>
+<p>未被Git跟踪的状态为<code>unstage</code>状态,已经被Git跟踪的状态为<code>stage</code>状态，因此包括staging状态和staged状态</p>
+<ul>
+<li>untrack files是指尚未被git所管理的文件；</li>
+<li>changed but not updated是指文件被git管理，并且发生了改变，但改动还没被git管理；这两种状态，都可以看成是改动还没被git管理的状态，我们这里称非stage状态。</li>
+<li>changes to be commited是指进入stage状态的文件，stage是commit和未管理之间的一个状态，也有别名叫index状态，也就是git已经管理了这些改动，但是还没完成提交。</li>
+</ul>
+<p>.gitignore中的文件，不会出现在以上三个状态中。</p>
+<h2 id="二，git的个人本地使用及操作"><a href="#二，git的个人本地使用及操作" class="headerlink" title="二，git的个人本地使用及操作"></a>二，git的个人本地使用及操作</h2><ol>
+<li><p>创建Git库</p>
+<p> cd 源码目录<br> git init    #初始化  在源码目录内生成一个.git的目录</p>
+</li>
+<li><p>注册用户信息</p>
+<p> git config –global user.name XXX    #用户名<br> git config –global user.email XXX    #用户邮箱<br> git config –list                      #查看用户信息</p>
+</li>
+<li><p>向git库中添加或删除文件</p>
+<p> git add XX            #加单个文件<br> git add .            #加所有<br> git add [path］        #会把对应目录或文件，添加到stage状态<br> git add .             #会把当前所有的untrack files和changed but not updated添加到stage状态</p>
+</li>
+<li><p>向版本库提交变化</p>
+<p> git commit –m “XXXX”    #直接添加简单提交信息,添加注释<br> git status                #查看当前代码库的状态<br> git log                    #查看版本信息<br> git log –p                #查看版本信息并显示每次修改的diff<br> git show sdjf974654dd…    #查看指定版本信息</p>
+<pre><code>#(show后面为每次提交系统自动生成的一串哈希值)
+</code></pre><p> git show sdji97            #一般只使用版本号的前几个字符即可</p>
+</li>
+<li><p>撤销与恢复</p>
+<p> git reset<br> git reset –hard        #回到原来编辑的地方,改动会丢失。</p>
+<pre><code>#（同样适用于团队对于其他人的修改恢复）
+</code></pre><p> git reset –hard sdv143kvf…        #可回到指定的版本</p>
+<pre><code>#(hard后面为每次提交系统自动生成的一串哈希值)
+</code></pre><p> git reset [path]    #会改变path指定的文件或目录的stage状态，到非stage状<br> git reset             #会将所有stage的文件状态，都改变成非stage状</p>
+</li>
+</ol>
+<p>回退1个change的写法就是<code>git reset HEAD^</code>，2个为<code>HEAD^^</code>，3个为<code>HEAD~3</code>，以此类推。</p>
+<ol>
+<li><p>向服务器提交变化</p>
+<p> git push        #向服务器提交</p>
+</li>
+<li><p>暂存改动</p>
+</li>
+</ol>
+<p><code>git stash</code>可以把当前的改动（stage和unstage，但不包括untrack的文件）暂存。然后通过<code>git stash list</code>查看。并通过<code>git stash apply</code>重新取出来。但apply之前要保证worktree是干净的。</p>
+<h2 id="三，git的团队开发及操作"><a href="#三，git的团队开发及操作" class="headerlink" title="三，git的团队开发及操作"></a>三，git的团队开发及操作</h2><ol>
+<li><p>获取项目</p>
+<p> cd 本地工作目录（自定）<br> git clone 服务器帐户@IP：项目.根路经<br> #这里具体操作为：<br> git clone git@192.168.20.22：android2.2.git</p>
+</li>
+</ol>
+<p>说明：这里假定服务器的用户名为git，服务器IP为192.168.20.22，项目名为android2.2，根路经为git的home（即根路径）</p>
+<ol>
+<li><p>团队开发的基本流程</p>
+<p> git add 改动的文件<br> git  commit    #（提交至本地）<br> git  pull    #（将服务器项目与本地项目合并）<br> git  push    #（将本地项目上传至服务器）（在提交前要git  pull  –rebase一下，确保当前的本地的代码为最新。）</p>
+</li>
+</ol>
+<h2 id="四，git的分支管理"><a href="#四，git的分支管理" class="headerlink" title="四，git的分支管理"></a>四，git的分支管理</h2><p>git分支操作在本地建立分支，然后与本地主枝合并，最终提交到服务器。有效的避免了因个人操作不当向服务器提交过多脏数据，避免频繁git clone服务器来更新本地库。</p>
+<p><strong>分支操作指令：</strong></p>
+<ol>
+<li><p>建立分支</p>
+<p> git branch AAA        #建立分支AAA</p>
+</li>
+<li><p>分支切换</p>
+<p> git checkout AAA    #从当前分支切换到AAA分支</p>
+</li>
+<li><p>将分支与主枝master合并</p>
+<p> git checkout master    #（首先切换回主枝）<br> git merge AAA        #（将分支AAA与主枝合并）</p>
+</li>
+<li><p>当前分支查看</p>
+<p> git  branch            #默认有master（也称为主枝）<br> git  branch –a        #查看当前所有分支</p>
+</li>
+<li><p>删除分支</p>
+<p> git branch –d AAA    #删除分支AAA</p>
+</li>
+</ol>
+<p><strong>备注：</strong> 上面只是一些基本的操作命令，更多的命令可通过帮助文档查询。</p>
+<p>帮助文档的使用：</p>
+<pre><code>man git-&lt;需查询的指令&gt;      #（git后面有“-”）
+如commit的查询为  man git-commit
+</code></pre><p>删除分支 : 如果你要删除的分支并没有被merge到当前分支的话，将产生一个错误提示。</p>
+</div><div class="tags"><a href="/blog/tags/git/">git</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/blog/2017/06/06/Notepad++列编辑、正则查找、替换/" class="pre">Notepad++列编辑、正则查找、替换</a><a href="/blog/2017/05/31/bat/" class="next">批处理语言规则--编辑bat文件</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一，Git代码状态转换图"><span class="toc-text">一，Git代码状态转换图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二，git的个人本地使用及操作"><span class="toc-text">二，git的个人本地使用及操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三，git的团队开发及操作"><span class="toc-text">三，git的团队开发及操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四，git的分支管理"><span class="toc-text">四，git的分支管理</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2017/06/06/Notepad++列编辑、正则查找、替换/">Notepad++列编辑、正则查找、替换</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/06/02/Git的使用说明/">Git的使用说明</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/bat/">批处理语言规则--编辑bat文件</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/kaa/">开源 IoT 平台 Kaa</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/mbed-OS/">物联网操作系统 mbed OS</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/Java奇淫巧技之Lombok/">Java奇淫巧技之Lombok</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/mqtt/">消息传输协议 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/27/JWT/">JWT 在前后端分离中的应用与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/26/myblog/">搭建个人博客系统</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/26/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/TEXT/">TEXT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/angular/">angular</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/blog/">blog</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/iot/">iot</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/jwt/">jwt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/script/">script</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/angular/" style="font-size: 15px;">angular</a> <a href="/blog/tags/jwt/" style="font-size: 15px;">jwt</a> <a href="/blog/tags/lombok/" style="font-size: 15px;">lombok</a> <a href="/blog/tags/notepad/" style="font-size: 15px;">notepad</a> <a href="/blog/tags/bat/" style="font-size: 15px;">bat</a> <a href="/blog/tags/git/" style="font-size: 15px;">git</a> <a href="/blog/tags/blog/" style="font-size: 15px;">blog</a> <a href="/blog/tags/kaa/" style="font-size: 15px;">kaa</a> <a href="/blog/tags/mbed/" style="font-size: 15px;">mbed</a> <a href="/blog/tags/mqtt/" style="font-size: 15px;">mqtt</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/05/">五月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://blog.csdn.net/junehappylove" title="CSDN" target="_blank">CSDN</a><ul></ul><a href="https://my.oschina.net/junehappylove/blog" title="OSChina" target="_blank">OSChina</a><ul></ul><a href="http://www.example3.com/" title="HEXO" target="_blank">HEXO</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/blog/baidusitemap.xml">网站地图</a> |  <a href="/blog/atom.xml">订阅</a> |  <a href="/blog/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/blog/." rel="nofollow">junehappylove.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/blog/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/blog/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>

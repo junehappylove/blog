@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="一入编程深似海，从此哥哥是大神"><title>Java奇淫巧技之Lombok | junehappylove</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/blog/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/blog/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/blog/favicon.ico"><link rel="bookmark" href="/blog/favicon.ico"><link rel="apple-touch-icon" href="/blog/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/blog/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Java奇淫巧技之Lombok</h1><a id="logo" href="/blog/.">junehappylove</a><p class="description">上善若水</p></div><div id="nav-menu"><a href="/blog/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/blog/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/blog/about/"><i class="fa fa-user"> 关于</i></a><a href="/blog/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="搜索..."></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">Java奇淫巧技之Lombok</h1><div class="post-meta"><span class="date">May 31, 2017</span><span class="category"><a href="/blog/categories/java/">java</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i> Hits</i></i></span><a href="/blog/2017/05/31/Java奇淫巧技之Lombok/#comments" class="comment-count"> 留言</a></div><div class="post-content"><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>  我们在开发过程中，通常都会定义大量的JavaBean，然后通过IDE去生成其属性的构造器、getter、setter、equals、hashcode、toString方法，当要对某个属性进行改变时，比如命名、类型等，都需要重新去生成上面提到的这些方法，那Java中有没有一种方式能够避免这种重复的劳动呢？答案是有，我们来看一下下面这张图，右面是一个简单的JavaBean，只定义了两个属性，在类上加上了@Data，从左面的结构图上可以看到，已经自动生成了上面提到的方法。</p>
+<p><img src="http://img.blog.csdn.net/20160828112844895" alt="image1"></p>
+<h2 id="Lombok简介"><a href="#Lombok简介" class="headerlink" title="Lombok简介"></a>Lombok简介</h2><p>Lombok是一个可以通过简单的注解形式来帮助我们简化消除一些必须有但显得很臃肿的Java代码的工具，通过使用对应的注解，可以在编译源码的时候生成对应的方法。官方地址：<a href="https://projectlombok.org/，github地址：https://github.com/rzwitserloot/lombok。" target="_blank" rel="external">https://projectlombok.org/，github地址：https://github.com/rzwitserloot/lombok。</a></p>
+<h2 id="Lombok使用"><a href="#Lombok使用" class="headerlink" title="Lombok使用"></a>Lombok使用</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><table>
+<thead>
+<tr>
+<th>title</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maven, Ivy or Gradle</td>
+<td>Lombok is in maven central. More…</td>
+</tr>
+<tr>
+<td>Javac</td>
+<td>Just put lombok.jar on the classpath.</td>
+</tr>
+<tr>
+<td>NetBeans</td>
+<td>Just put lombok.jar on the classpath and enable annotation processing. More…</td>
+</tr>
+<tr>
+<td>Eclipse and variants</td>
+<td>Run lombok.jar as a java app (i.e. doubleclick it, usually) to install. Also add lombok.jar to your project. Supported variants: Springsource Tool Suite, JBoss Developer Studio</td>
+</tr>
+<tr>
+<td>IDEA IntelliJ</td>
+<td>A plugin developed by Michael Plushnikov adds support for most features.</td>
+</tr>
+<tr>
+<td>Javadoc</td>
+<td>First delombok your code then run javadoc on the result. More…</td>
+</tr>
+<tr>
+<td>Android</td>
+<td>The proper way to use lombok with android is somewhat complicated but possible. More…</td>
+</tr>
+<tr>
+<td>GWT</td>
+<td>Lombok works with GWT. More…</td>
+</tr>
+<tr>
+<td>Play! Framework</td>
+<td>Use Aaron Freeman’s lombok play plugin.</td>
+</tr>
+<tr>
+<td>ecj</td>
+<td>Lombok works on ecj and ecj-based tools. More…</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://projectlombok.org/download.html" target="_blank" rel="external">https://projectlombok.org/download.html</a></p>
+<h3 id="注解介绍"><a href="#注解介绍" class="headerlink" title="注解介绍"></a>注解介绍</h3><p>下面只是介绍了几个常用的注解，更多的请参见<a href="https://projectlombok.org/features/index.html。" target="_blank" rel="external">https://projectlombok.org/features/index.html。</a></p>
+<ul>
+<li><code>@Getter</code> / <code>@Setter</code></li>
+</ul>
+<p>  可以作用在类上和属性上，放在类上，会对所有的非静态(non-static)属性生成Getter/Setter方法，放在属性上，会对该属性生成Getter/Setter方法。并可以指定Getter/Setter方法的访问级别。</p>
+<ul>
+<li><code>@EqualsAndHashCode</code></li>
+</ul>
+<p>  默认情况下，会使用所有非瞬态(non-transient)和非静态(non-static)字段来生成equals和hascode方法，也可以指定具体使用哪些属性。</p>
+<ul>
+<li><code>@ToString</code></li>
+</ul>
+<p>  生成toString方法，默认情况下，会输出类名、所有属性，属性会按照顺序输出，以逗号分割。</p>
+<ul>
+<li><code>@NoArgsConstructor</code>, <code>@RequiredArgsConstructor</code> and <code>@AllArgsConstructor</code></li>
+</ul>
+<p>  无参构造器、部分参数构造器、全参构造器，当我们需要重载多个构造器的时候，Lombok就无能为力了。</p>
+<ul>
+<li><code>@Data</code></li>
+</ul>
+<p>  <code>@ToString</code>, <code>@EqualsAndHashCode</code>, 所有属性的<code>@Getter</code>, 所有non-final属性的<code>@Setter</code>和<code>@RequiredArgsConstructor</code>的组合，通常情况下，我们使用这个注解就足够了。</p>
+<h2 id="Lombok原理"><a href="#Lombok原理" class="headerlink" title="Lombok原理"></a>Lombok原理</h2><p>了解了简单的使用之后，现在应该比较好奇它是如何实现的。整个使用的过程中，只需要使用注解而已，不需要做其它额外的工作，那玄妙之处应该是在注解的解析上。JDK5引入了注解的同时，也提供了两种解析方式。</p>
+<h3 id="运行时解析"><a href="#运行时解析" class="headerlink" title="运行时解析"></a>运行时解析</h3><p>  运行时能够解析的注解，必须将<code>@Retention</code>设置为RUNTIME，这样可以通过反射拿到该注解。<code>java.lang.reflect</code>反射包中提供了一个接口<code>AnnotatedElement</code>，该接口定义了获取注解信息的几个方法，<code>Class</code>、<code>Constructor</code>、<code>Field</code>、<code>Method</code>、<code>Package</code>等都实现了该接口，大部分开发者应该都很熟悉这种解析方式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isAnnotationPresent</span><span class="params">(Class&lt;? extends Annotation&gt; annotationClass)</span></span>;</div><div class="line">&lt;T extends Annotation&gt; <span class="function">T <span class="title">getAnnotation</span><span class="params">(Class&lt;T&gt; annotationClass)</span></span>;</div><div class="line">Annotation[] getAnnotations();</div><div class="line">Annotation[] getDeclaredAnnotations();</div></pre></td></tr></table></figure>
+<h3 id="编译时解析"><a href="#编译时解析" class="headerlink" title="编译时解析"></a>编译时解析</h3><p>编译时解析有两种机制，网上很多文章都把它俩搞混了，分别简单描述一下。</p>
+<p><strong>Annotation Processing Tool</strong></p>
+<p><code>apt</code>自JDK5产生，JDK7已标记为过期，不推荐使用，JDK8中已彻底删除，自JDK6开始，可以使用Pluggable Annotation Processing API来替换它，apt被替换主要有2点原因：</p>
+<ul>
+<li>api都在com.sun.mirror非标准包下</li>
+<li>没有集成到javac中，需要额外运行</li>
+</ul>
+<p> apt的更多介绍可以参见<a href="http://docs.oracle.com/javase/7/docs/technotes/guides/apt/GettingStarted.html" target="_blank" rel="external">这里</a>。</p>
+<p><strong>Pluggable Annotation Processing API</strong></p>
+<p><a href="https://jcp.org/en/jsr/detail?id=269" target="_blank" rel="external">JSR 269</a>，自JDK6加入，作为apt的替代方案，它解决了apt的两个问题，javac在执行的时候会调用实现了该API的程序，这样我们就可以对编译器做一些增强，这时javac执行的过程如下：<br><img src="http://img.blog.csdn.net/20160908130644281" alt="image2"> </p>
+<p>Lombok就是使用这种方式实现的，有兴趣的话可以去看看其Lombok源码，对应注解的实现都在HandleXXX中，比如@Getter注解的实现是HandleGetter.handle()。还有一些其它类库使用这种方式实现，比如<a href="https://github.com/google/auto">Google Auto</a>、<a href="http://square.github.io/dagger/" target="_blank" rel="external">Dagger</a>等等。</p>
+<h2 id="Lombok问题"><a href="#Lombok问题" class="headerlink" title="Lombok问题"></a>Lombok问题</h2><ul>
+<li>无法支持多种参数构造器的重载</li>
+<li>奇淫巧技，使用会有争议</li>
+</ul>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="http://notatube.blogspot.fr/2010/11/project-lombok-trick-explained.html" target="_blank" rel="external">http://notatube.blogspot.fr/2010/11/project-lombok-trick-explained.html</a><br><a href="http://www.lteconsulting.fr/annotation-processing" target="_blank" rel="external">http://www.lteconsulting.fr/annotation-processing</a><br><a href="http://hannesdorfmann.com/annotation-processing/annotationprocessing101" target="_blank" rel="external">http://hannesdorfmann.com/annotation-processing/annotationprocessing101</a><br><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/apt/GettingStarted.html" target="_blank" rel="external">http://docs.oracle.com/javase/7/docs/technotes/guides/apt/GettingStarted.html</a></p>
+</div><div class="tags"><a href="/blog/tags/lombok/">lombok</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/blog/2017/05/31/mbed-OS/" class="pre">物联网操作系统 mbed OS</a><a href="/blog/2017/05/31/mqtt/" class="next">消息传输协议 MQTT</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok简介"><span class="toc-text">Lombok简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok使用"><span class="toc-text">Lombok使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境"><span class="toc-text">环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注解介绍"><span class="toc-text">注解介绍</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok原理"><span class="toc-text">Lombok原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#运行时解析"><span class="toc-text">运行时解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译时解析"><span class="toc-text">编译时解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok问题"><span class="toc-text">Lombok问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-text">引用</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2017/06/06/Notepad++列编辑、正则查找、替换/">Notepad++列编辑、正则查找、替换</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/06/02/Git的使用说明/">Git的使用说明</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/bat/">批处理语言规则--编辑bat文件</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/kaa/">开源 IoT 平台 Kaa</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/mbed-OS/">物联网操作系统 mbed OS</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/Java奇淫巧技之Lombok/">Java奇淫巧技之Lombok</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/31/mqtt/">消息传输协议 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/27/JWT/">JWT 在前后端分离中的应用与实践</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/26/myblog/">搭建个人博客系统</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2017/05/26/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/TEXT/">TEXT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/angular/">angular</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/blog/">blog</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/iot/">iot</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/jwt/">jwt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/script/">script</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/blog/tags/angular/" style="font-size: 15px;">angular</a> <a href="/blog/tags/jwt/" style="font-size: 15px;">jwt</a> <a href="/blog/tags/lombok/" style="font-size: 15px;">lombok</a> <a href="/blog/tags/notepad/" style="font-size: 15px;">notepad</a> <a href="/blog/tags/bat/" style="font-size: 15px;">bat</a> <a href="/blog/tags/git/" style="font-size: 15px;">git</a> <a href="/blog/tags/blog/" style="font-size: 15px;">blog</a> <a href="/blog/tags/kaa/" style="font-size: 15px;">kaa</a> <a href="/blog/tags/mbed/" style="font-size: 15px;">mbed</a> <a href="/blog/tags/mqtt/" style="font-size: 15px;">mqtt</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/05/">五月 2017</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="http://blog.csdn.net/junehappylove" title="CSDN" target="_blank">CSDN</a><ul></ul><a href="https://my.oschina.net/junehappylove/blog" title="OSChina" target="_blank">OSChina</a><ul></ul><a href="http://www.example3.com/" title="HEXO" target="_blank">HEXO</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/blog/baidusitemap.xml">网站地图</a> |  <a href="/blog/atom.xml">订阅</a> |  <a href="/blog/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/blog/." rel="nofollow">junehappylove.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/blog/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/blog/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script></body></html>
